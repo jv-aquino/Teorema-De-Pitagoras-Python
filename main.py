@@ -77,4 +77,3 @@ if valido == True:
   None
 else:
  None  
-#Printando o valor final do parâmetro desconhecido
