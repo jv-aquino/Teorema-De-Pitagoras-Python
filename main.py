@@ -1,10 +1,9 @@
 #Aplicação do Teorema de Pitágoras(a² = b² + c²) com 1 valor desconhecido em Python - v1.1.0 João Vitor de Aquino, 26/06/2020
-#Disponível em: https://github.com/jv-aquino/TeoremaDePitagorasPython/
-#Declarando as variáveis Hipotenusa(a), Catetos (b, c)
-#E outras variáveis referentes aos parâmetros, valores e validações(parametro, paramDesconhecido, valorFinal, valorInvalido, valido)
-a, b, c = float, float, float
-parametro, paramDesconhecido, valido = str, str, True
-valorFinal, valorInvalido = '---------------\nUm erro ocorreu', '\nValor(es) Inválido(s)'
+#Disponível em: https://github.com/jv-aquino/Teorema-De-Pitagoras-Python/
+#Declarando as variáveis referente da equação, como: Hipotenusa(a), Catetos (b, c) e o valor referente ao total (valorFinal)
+#E outras variáveis referentes aos parâmetros,validações e erros(parametro, paramDesconhecido, valorFinal, valorInvalido, valido, erro)
+a, b, c, valorFinal = float, float, float, float
+parametro, paramDesconhecido, valido, erro, valorInvalido = str, str, True, '---------------\nUm erro ocorreu', '\nValor(es) Inválido(s)\n'
 
 #Descobrindo o parâmetro desconhecido
 parametro = input('Qual é o parâmetro desconhecido (a, b ou c)? \n')
@@ -19,7 +18,7 @@ if parametro == 'a' or parametro == 'A':
  try:
   b,c = float(b), float(c)
  except ValueError:
-  print(valorInvalido)
+  print(valorInvalido + erro)
   valido = False
   
 #Obtendo o valor de "a" e "c" caso o parâmetro desconhecido seja "b"
@@ -30,7 +29,7 @@ elif parametro == 'b' or parametro == 'B':
  try:
   a,c = float(a), float(c)
  except ValueError:
-  print(valorInvalido)
+  print(valorInvalido + erro)
   valido = False
 
 #Obtendo o valor de "a" e "b" caso o parâmetro desconhecido seja "c"
@@ -41,12 +40,12 @@ elif parametro == 'c' or parametro == 'C':
  try:
   a,b = float(a), float(b)
  except ValueError:
-  print(valorInvalido)
+  print(valorInvalido + erro)
   valido = False
 
 #Mensagem de erro caso o parâmetro não seja válido
 else: 
- print('Esse parâmetro (\"' + parametro + '\") é inválido :/ \nOs parâmetros aceitados são \"a\"(Hipotenusa), \"b\"(Cateto Oposto) e \"c\"(Cateto Adjacente)')
+ print('Esse parâmetro (\"' + parametro + '\") é inválido :/ \nOs parâmetros aceitados são \"a\"(Hipotenusa), \"b\"(Cateto Oposto) e \"c\"(Cateto Adjacente)\n' + erro)
 
 #Com os valores estabelecidos, agora é hora de calcular ;)
 #Verficando se os valores estão corretos
@@ -57,6 +56,7 @@ if valido == True:
   a = a**(0.5)
   a = str(a)
   valorFinal = ('O valor da Hipotenusa(a) é ' + a)
+  print(valorFinal)
 
 #Calculando o valor da Cateto Oposto(b), caso esse seja o valor desconhecido
  elif parametro == 'b' or parametro == 'B':
@@ -64,6 +64,7 @@ if valido == True:
   b = b**(0.5)
   b = str(b)
   valorFinal = ('O valor do Cateto Oposto(b)  é ' + b)
+  print(valorFinal)
 
 #Calculando o valor da Cateto Adjacente(c), caso esse seja o valor desconhecido
  elif parametro == 'c' or parametro == 'C':
@@ -71,9 +72,9 @@ if valido == True:
   c = c**(0.5)
   c = str(c)
   valorFinal = ('O valor do Cateto Adjacente(c) é ' + c)
+  print(valorFinal)
  else:
   None
 else:
  None  
 #Printando o valor final do parâmetro desconhecido
-print(valorFinal)
